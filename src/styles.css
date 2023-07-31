@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Koh+Santepheap&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn-gray {
+    @apply appearance-none border bg-custom-gray-100 opacity-50 rounded w-full py-2 px-3 leading-tight
+  }
+
+  .btn-gray:focus {
+    @apply outline-none shadow-none
+  }
+}
