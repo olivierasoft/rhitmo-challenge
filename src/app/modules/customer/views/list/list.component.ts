@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { filter, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { CustomerListDto } from 'src/app/core/dto/customer-list.dto';
 import { ICustomer } from 'src/app/core/interfaces/customer.interface';
 import { CustomerProvider } from 'src/app/core/providers/customer.provider';

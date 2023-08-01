@@ -130,10 +130,10 @@
       >
     </div>
   </app-input-row>
-  <app-input-row>
+  <app-input-row extraClasses="gap-0 flex-wrap md:flex-nowrap sm:gap-6">
     <app-input-group
       [control]="registerFormGroup.controls.cardName"
-      class="w-[50%]"
+      class="w-[100%]"
     >
       <label>Nome do Cartão</label>
       <input
@@ -144,9 +144,9 @@
         placeholder="O nome do seu cartão"
       />
     </app-input-group>
-    <div class="flex gap-6 w-[50%]">
+    <div class="flex gap-6 w-full">
       <app-input-group
-        class="w-[50%]"
+        class="w-full md:w-[50%]"
         [control]="registerFormGroup.controls.cardMonth"
       >
         <label>Data de Expiração</label>
@@ -160,10 +160,10 @@
         />
       </app-input-group>
       <app-input-group
-        class="w-[50%]"
+        class="w-full md:w-[50%]"
         [control]="registerFormGroup.controls.cardYear"
       >
-        <br />
+        <br class="" />
         <input
           mask="0000"
           formControlName="cardYear"
@@ -175,9 +175,9 @@
       </app-input-group>
     </div>
   </app-input-row>
-  <app-input-row>
+  <app-input-row extraClasses="flex-wrap gap-0 sm:gap-6 sm:flex-nowrap">
     <app-input-group
-      class="w-[50%]"
+      class="w-full sm:w-1/2"
       [control]="registerFormGroup.controls.cardNumber"
     >
       <label>Número do Cartão</label>
@@ -192,7 +192,7 @@
     </app-input-group>
     <app-input-group
       [control]="registerFormGroup.controls.cardCode"
-      class="w-[50%]"
+      class="w-full sm:w-1/2"
     >
       <label>Código de Segurança</label>
       <input
@@ -208,7 +208,7 @@
   <hr class="border-1 leading-5 font-bold text-2xl mt-2" />
   <div class="flex flex-col mt-7">
     <span>Seu cartão será debitado em R$ 49,00</span>
-    <button (click)="onSubmit()" type="button" class="btn mt-3 w-[235px]">
+    <button (click)="onSubmit()" type="button" class="btn mt-3 w-full sm:w-[235px]">
       REALIZAR MATRÍCULA
     </button>
     <span class="text-xs">Informações seguras e criptografadas</span>
