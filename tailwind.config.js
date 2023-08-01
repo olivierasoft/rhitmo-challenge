@@ -16,6 +16,9 @@ module.exports = {
         "custom-gray": {
           100: '#D9D9D9'
         },
+        "custom-blue": {
+          100: '#377DC0'
+        }
       }
     },
   },

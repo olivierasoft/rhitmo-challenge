@@ -1,13 +1,24 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { ICustomer } from "../interfaces/customer.interface";
-import { CustomerMock } from "../mocks/customer.mock";
-import { DatabaseProvider } from "./database.provider";
+import { RequestProvider } from "./request,provider";
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CustomerProvider extends DatabaseProvider<ICustomer> {
-  constructor() {
-    super(CustomerMock)
+@Injectable()
+export class CustomerProvider extends RequestProvider {
+  constructor(httpClient: HttpClient) {
+    super(httpClient);
   }
-}
+
+  getCustomers(): Observable<ICustomer[]> {
+    return this.get<ICustomer[], null>('customers')
+  }
+
+  getCustomersById(id: string): Observable<ICustomer[]> {
+    return this.get<ICustomer[], { id: string }>('customers', {id})
+  }
+
+  getCustomersByName(name: string): Observable<ICustomer[]> {
+    return this.get<ICustomer[], { name_like: string }>('customers', {name_like: name})
+  }
+ }

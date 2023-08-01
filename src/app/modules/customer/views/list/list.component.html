@@ -1,0 +1,78 @@
+<div class="h-[600px] font-koh-santheap">
+  <app-sector-title sectorTitle="Lista de Cliente"></app-sector-title>
+  <app-input-row>
+    <app-input-group class="w-[100%]">
+      <label>Nome do Cliente</label>
+      <input
+        [formControl]="customerNameFormControl"
+        class="input-gray"
+        id="username"
+        type="text"
+        placeholder="Digite o nome do cliente"
+      />
+    </app-input-group>
+  </app-input-row>
+  <table
+    class="min-w-full mt-5 border text-center text-sm font-light dark:border-neutral-500"
+  >
+    <thead class="border-b font-medium dark:border-neutral-500">
+      <tr>
+        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+          Nome
+        </th>
+        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+          E-mail
+        </th>
+        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+          CPF
+        </th>
+        <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
+          Criado em
+        </th>
+        <th scope="col" class="px-6 py-4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let customer of customers$ | async"
+        class="border-b dark:border-neutral-500"
+      >
+        <td
+          class="whitespace-nowrap border-r font-medium dark:border-neutral-500"
+        >
+          {{ customer.name }}
+        </td>
+        <td
+          class="whitespace-nowrap border-r dark:border-neutral-500"
+        >
+          {{ customer.email }}
+        </td>
+        <td
+          class="whitespace-nowrap border-r dark:border-neutral-500"
+        >
+          {{ customer.cpf | CPF}}
+        </td>
+        <td
+          class="whitespace-nowrap border-r w-40 dark:border-blue-500"
+        >
+          {{ customer.createdAt | date: 'dd/MM/yyyy' }}
+        </td>
+        <td class="flex gap-2 w-full h-[35px] justify-center items-center border-none">
+          <img (click)="onRemoveButtonClick(customer.id)" class="cursor-pointer w-5 h-5 hover:opacity-70" src="../../../../../assets/delete.svg">
+          <a routerLink="/customer/form" [queryParams]="{ id: customer.id }">
+            <img class="cursor-pointer w-5 h-5 hover:opacity-70" src="../../../../../assets/edit.svg">
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td class="whitespace-nowrap border-r dark:border-neutral-500"></td>
+        <td class="whitespace-nowrap border-r dark:border-neutral-500"></td>
+        <td class="whitespace-nowrap border-r dark:border-neutral-500"></td>
+        <td class="whitespace-nowrap border-r dark:border-neutral-500"></td>
+        <td class="flex justify-center items-center h-[35px]">
+          <img routerLink="/customer/form" class="cursor-pointer w-5 h-5 hover:opacity-70" src="../../../../../assets/add.svg">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

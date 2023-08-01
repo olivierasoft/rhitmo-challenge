@@ -1,10 +1,216 @@
-<app-input-row>
-  <app-input-group class="w-[50%]">
-    <label>Nome</label>
-    <input
-      class="btn-gray"
-      id="username"
-      type="text"
-      placeholder="Digite seu nome">
-  </app-input-group>
-</app-input-row>
+<form class="mt-8 font-koh-santheap" [formGroup]="registerFormGroup">
+  <app-input-row>
+    <app-input-group
+      [control]="registerFormGroup.controls.name"
+      class="w-[100%]"
+    >
+      <label>Nome</label>
+      <input
+        formControlName="name"
+        class="input-gray"
+        id="username"
+        type="text"
+        placeholder="Digite seu nome"
+      />
+    </app-input-group>
+  </app-input-row>
+  <app-input-row>
+    <app-input-group
+      [control]="registerFormGroup.controls.email"
+      class="w-[100%]"
+    >
+      <label>Email</label>
+      <input
+        formControlName="email"
+        class="input-gray"
+        id="username"
+        type="text"
+        placeholder="Digite seu melhor e-mail"
+      />
+    </app-input-group>
+  </app-input-row>
+  <app-input-row>
+    <app-input-group
+      class="w-[100%]"
+      [control]="registerFormGroup.controls.cpf"
+    >
+      <label>CPF</label>
+      <input
+        mask="000.000.000-00"
+        formControlName="cpf"
+        class="input-gray"
+        id="username"
+        type="text"
+        placeholder="Digite CPF aqui"
+      />
+    </app-input-group>
+  </app-input-row>
+  <app-input-row>
+    <app-input-group
+      class="w-[50%]"
+      [control]="registerFormGroup.controls.address"
+    >
+      <label>Endereço</label>
+      <input
+        formControlName="address"
+        class="input-gray"
+        id="username"
+        type="text"
+        placeholder="Digite seu endereço"
+      />
+    </app-input-group>
+    <app-input-group
+      class="w-[50%]"
+      [control]="registerFormGroup.controls.state"
+    >
+      <label>Estado</label>
+      <input
+        formControlName="state"
+        class="input-gray"
+        id="username"
+        type="text"
+        placeholder="Digite seu estado"
+      />
+    </app-input-group>
+  </app-input-row>
+  <app-input-row>
+    <app-input-group class="w-[50%]" [control]="registerFormGroup.controls.tax">
+      <label>CEP</label>
+      <input
+        mask="00000-00"
+        formControlName="tax"
+        class="input-gray"
+        id="username"
+        type="text"
+        placeholder="Exemplo: 00000-00"
+      />
+    </app-input-group>
+    <app-input-group
+      class="w-[50%]"
+      [control]="registerFormGroup.controls.city"
+    >
+      <label>Cidade</label>
+      <input
+        formControlName="city"
+        class="input-gray"
+        id="username"
+        type="text"
+        placeholder="Selecione sua cidade"
+      />
+    </app-input-group>
+  </app-input-row>
+  <app-sector-title sectorTitle="Forma de Pagamento"></app-sector-title>
+  <app-input-row>
+    <div class="flex items-center mb-4">
+      <input
+        id="cartaoCredito"
+        type="radio"
+        formControlName="paymentMethod"
+        [value]="1"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label
+        for="cartaoCredito"
+        class="ml-2 text-base font-medium text-gray-900 dark:text-gray-300"
+        >Cartão de Crédito</label
+      >
+    </div>
+    <div class="flex items-center mb-4">
+      <input
+        id="boletoBancario"
+        type="radio"
+        formControlName="paymentMethod"
+        [value]="2"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      />
+      <label
+        for="boletoBancario"
+        class="ml-2 text-base font-medium text-gray-900 dark:text-gray-300"
+        >Boleto Bancário</label
+      >
+    </div>
+  </app-input-row>
+  <app-input-row>
+    <app-input-group
+      [control]="registerFormGroup.controls.cardName"
+      class="w-[50%]"
+    >
+      <label>Nome do Cartão</label>
+      <input
+        formControlName="cardName"
+        class="input-gray"
+        id="username"
+        type="text"
+        placeholder="O nome do seu cartão"
+      />
+    </app-input-group>
+    <div class="flex gap-6 w-[50%]">
+      <app-input-group
+        class="w-[50%]"
+        [control]="registerFormGroup.controls.cardMonth"
+      >
+        <label>Data de Expiração</label>
+        <input
+          mask="00"
+          formControlName="cardMonth"
+          class="input-gray"
+          id="username"
+          type="text"
+          placeholder="O mês do cartão"
+        />
+      </app-input-group>
+      <app-input-group
+        class="w-[50%]"
+        [control]="registerFormGroup.controls.cardYear"
+      >
+        <br />
+        <input
+          mask="0000"
+          formControlName="cardYear"
+          class="input-gray"
+          id="username"
+          type="text"
+          placeholder="O ano do seu cartão"
+        />
+      </app-input-group>
+    </div>
+  </app-input-row>
+  <app-input-row>
+    <app-input-group
+      class="w-[50%]"
+      [control]="registerFormGroup.controls.cardNumber"
+    >
+      <label>Número do Cartão</label>
+      <input
+        mask="0000 0000 0000 0000"
+        formControlName="cardNumber"
+        class="input-gray"
+        id="username"
+        type="text"
+        placeholder="#### #### #### ####"
+      />
+    </app-input-group>
+    <app-input-group
+      [control]="registerFormGroup.controls.cardCode"
+      class="w-[50%]"
+    >
+      <label>Código de Segurança</label>
+      <input
+        mask="000"
+        class="input-gray"
+        formControlName="cardCode"
+        id="username"
+        type="text"
+        placeholder="###"
+      />
+    </app-input-group>
+  </app-input-row>
+  <hr class="border-1 leading-5 font-bold text-2xl mt-2" />
+  <div class="flex flex-col mt-7">
+    <span>Seu cartão será debitado em R$ 49,00</span>
+    <button (click)="onSubmit()" type="button" class="btn mt-3 w-[235px]">
+      REALIZAR MATRÍCULA
+    </button>
+    <span class="text-xs">Informações seguras e criptografadas</span>
+  </div>
+</form>

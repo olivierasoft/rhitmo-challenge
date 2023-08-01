@@ -4,11 +4,15 @@
 @tailwind utilities;
 
 @layer components {
-  .btn-gray {
+  .input-gray {
     @apply appearance-none border bg-custom-gray-100 opacity-50 rounded w-full py-2 px-3 leading-tight
   }
 
-  .btn-gray:focus {
+  .input-gray:focus {
     @apply outline-none shadow-none
+  }
+
+  .btn {
+    @apply font-koh-santheap text-white bg-[#377DC0] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-3 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
   }
 }

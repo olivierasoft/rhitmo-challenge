@@ -1,9 +1,8 @@
-import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
+import { NgModule } from '@angular/core';
+import { CPFPipe } from './pipes/cpf.pipe';
 
 @NgModule({
-  imports: [
-    ReactiveFormsModule
-  ],
+  declarations: [CPFPipe],
+  exports: [CPFPipe],
 })
 export class SharedModule {}

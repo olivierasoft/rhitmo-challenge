@@ -1,8 +1,17 @@
 <header class="flex items-center justify-between bg-nav-100 w-full h-[69px]">
-  <img class="w-[25px] h-[25px] ml-8 cursor-pointer" src="../../../../../assets/logo.png">
+  <img
+    class="w-[25px] h-[25px] ml-8 cursor-pointer"
+    src="../../../../../assets/logo.png"
+  />
   <nav>
-    <ul class="flex gap-5 text-white font-inter font-[700] mr-8 cursor-pointer">
-      <li *ngFor="let item of menuItems">{{ item.name }}</li>
+    <ul class="flex gap-5 font-inter font-[700] mr-8 cursor-pointer">
+      <li
+        [className]="item.activated ? 'text-amber-300' : 'text-white'"
+        *ngFor="let item of menuItems"
+      >
+        <a (click)="onMenuClick(item)">{{ item.name }}</a>
+      </li>
     </ul>
   </nav>
 </header>
+<app-title [title]="activatedMenu"></app-title>

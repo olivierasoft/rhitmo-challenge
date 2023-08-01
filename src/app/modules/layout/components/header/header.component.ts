@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { ActivatedRoute, NavigationEnd, Event, Router } from '@angular/router';
 import { IMenu } from 'src/app/core/interfaces/menu.interface';
 
 @Component({
@@ -8,29 +7,44 @@ import { IMenu } from 'src/app/core/interfaces/menu.interface';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute) {}
+  activatedMenu?: string;
+
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 
   menuItems: IMenu[] = [
     {
       name: 'Lista',
-      url: '/',
+      url: '/customer/list',
     },
     {
       name: 'Cadastro',
-      url: '/',
+      url: '/customer/form',
     },
   ];
 
-
-  getFullPath(): Observable<string> {
-    return this.activatedRoute.url.pipe(
-      map((segments) =>
-        segments.reduce((prev, curr, i) => prev.concat('/' + curr.path), '')
-      )
+  setActivatedMenu(): void {
+    const itemIndex = this.menuItems.findIndex((item) =>
+      window.location.pathname.match(item.url)
     );
+
+    this.menuItems = this.menuItems.map((menu) => ({
+      ...menu,
+      activated: false,
+    }));
+
+    this.activatedMenu = this.menuItems[itemIndex]?.name;
+    this.menuItems[itemIndex].activated = true;
+  }
+
+  onMenuClick(menu: IMenu): void {
+    this.router.navigate([menu.url]);
   }
 
   ngOnInit(): void {
-    this.getFullPath();
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.setActivatedMenu();
+      }
+    });
   }
 }
