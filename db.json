@@ -1,21 +1,38 @@
 {
   "customers": [
     {
-      "id": 7,
+      "id": 1,
       "address": "Av Belo Horizonte",
-      "city": "Uberlandia",
-      "cpf": "54585858485",
-      "email": "renancesar@gmail.com",
-      "name": "Renan Oliveira Lima",
-      "state": "MG",
-      "tax": "34445565",
-      "paymentMethod": 2,
-      "cardName": "324344444",
-      "cardMonth": "05",
+      "city": "Uberlândia",
+      "cpf": "34885999900",
+      "email": "renancesar03@gmail.com",
+      "name": "Teste de Cadastro",
+      "state": "Minas Gerais",
+      "tax": "3384949",
+      "paymentMethod": 1,
+      "cardName": "Itaúcard",
+      "cardMonth": "03",
       "cardYear": "2023",
-      "cardNumber": "4355565442334455",
-      "cardCode": "743",
-      "createdAt": "2023-08-01T19:11:06.947Z"
+      "cardNumber": "3449569493013459",
+      "cardCode": "456",
+      "createdAt": "2023-08-01T22:08:43.150Z"
+    },
+    {
+      "id": 2,
+      "address": "Av Belo Horizontre",
+      "city": "Uberlândia",
+      "cpf": "70501995133",
+      "email": "renancesar03@gmail.com",
+      "name": "Esse é outro teste",
+      "state": "MG",
+      "tax": "4488390",
+      "paymentMethod": 1,
+      "cardName": "Itaúcard",
+      "cardMonth": "03",
+      "cardYear": "2023",
+      "cardNumber": "3948500038455343",
+      "cardCode": "343",
+      "createdAt": "2023-08-01T22:09:21.429Z"
     }
   ]
 }

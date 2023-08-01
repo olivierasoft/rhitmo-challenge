@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICustomer } from 'src/app/core/interfaces/customer.interface';
 import { CustomerProvider } from 'src/app/core/providers/customer.provider';
@@ -54,7 +50,10 @@ export class RegisterComponent implements OnInit {
       state: new FormControl(null, [Validators.required]),
       tax: new FormControl(null, [Validators.required]),
       paymentMethod: new FormControl(1, [Validators.required]),
-      cardName: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+      cardName: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(5),
+      ]),
       cardMonth: new FormControl(null, [Validators.required]),
       cardYear: new FormControl(null, [Validators.required]),
       cardNumber: new FormControl(null, [Validators.required]),
@@ -64,7 +63,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-
     if (this.registerFormGroup.invalid) {
       this.registerFormGroup.markAllAsTouched();
 
@@ -73,20 +71,18 @@ export class RegisterComponent implements OnInit {
 
     const isUpdateMode = this.customerId;
 
-    const formData = this.registerFormGroup.getRawValue()
+    const formData = this.registerFormGroup.getRawValue();
 
-    this.customerProvider
-      .put('customers/' + formData.id, formData)
-      .subscribe(() => {
-        this.router.navigate(['/']);
-      });
     if (isUpdateMode) {
-    } else {
       this.customerProvider
-        .post('customers', formData)
+        .put('customers/' + formData.id, formData)
         .subscribe(() => {
           this.router.navigate(['/']);
         });
+    } else {
+      this.customerProvider.post('customers', formData).subscribe(() => {
+        this.router.navigate(['/']);
+      });
     }
   }
 
