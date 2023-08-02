@@ -64,13 +64,15 @@
       [control]="registerFormGroup.controls.state"
     >
       <label>Estado</label>
-      <input
+      <select
         formControlName="state"
-        class="input-gray"
+        class="select-gray"
         id="username"
         type="text"
         placeholder="Digite seu estado"
-      />
+      >
+        <option [value]="uf.id" *ngFor="let uf of ufs$ | async">{{ uf.nome }}</option>
+      </select>
     </app-input-group>
   </app-input-row>
   <app-input-row>
@@ -90,13 +92,15 @@
       [control]="registerFormGroup.controls.city"
     >
       <label>Cidade</label>
-      <input
+      <select
         formControlName="city"
-        class="input-gray"
+        class="select-gray"
         id="username"
         type="text"
         placeholder="Selecione sua cidade"
-      />
+      >
+      <option [value]="city.id" *ngFor="let city of cities$ | async">{{ city.nome }}</option>
+    </select>
     </app-input-group>
   </app-input-row>
   <app-sector-title sectorTitle="Forma de Pagamento"></app-sector-title>
@@ -130,7 +134,7 @@
       >
     </div>
   </app-input-row>
-  <app-input-row extraClasses="gap-0 flex-wrap md:flex-nowrap sm:gap-6">
+  <app-input-row extraClasses="gap-0 flex-wrap md:flex-nowrap">
     <app-input-group
       [control]="registerFormGroup.controls.cardName"
       class="w-[100%]"
@@ -144,7 +148,7 @@
         placeholder="O nome do seu cartão"
       />
     </app-input-group>
-    <div class="flex gap-6 w-full">
+    <div class="flex gap-x-6 w-full">
       <app-input-group
         class="w-full md:w-[50%]"
         [control]="registerFormGroup.controls.cardMonth"
@@ -175,7 +179,7 @@
       </app-input-group>
     </div>
   </app-input-row>
-  <app-input-row extraClasses="flex-wrap gap-0 sm:gap-6 sm:flex-nowrap">
+  <app-input-row extraClasses="flex-wrap sm:flex-nowrap">
     <app-input-group
       class="w-full sm:w-1/2"
       [control]="registerFormGroup.controls.cardNumber"
@@ -208,7 +212,11 @@
   <hr class="border-1 leading-5 font-bold text-2xl mt-2" />
   <div class="flex flex-col mt-7">
     <span>Seu cartão será debitado em R$ 49,00</span>
-    <button (click)="onSubmit()" type="button" class="btn mt-3 w-full sm:w-[235px]">
+    <button
+      (click)="onSubmit()"
+      type="button"
+      class="btn mt-3 w-full sm:w-[235px]"
+    >
       REALIZAR MATRÍCULA
     </button>
     <span class="text-xs">Informações seguras e criptografadas</span>

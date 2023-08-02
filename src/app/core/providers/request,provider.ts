@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { CleanUtil } from '../util/clean.util';
 
 export class RequestProvider {
-  private baseUrl: string = 'http://localhost:3000/';
+  public baseUrl: string = 'http://localhost:3000/';
 
   constructor(public httpClient: HttpClient) {}
 
