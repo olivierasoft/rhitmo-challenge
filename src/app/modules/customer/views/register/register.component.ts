@@ -75,7 +75,7 @@ export class RegisterComponent implements OnInit {
       this.cities$ = this.ibgeProvider.getCities(change).pipe(
         tap(() => {
           this.registerFormGroup.controls.city.enable();
-          if (this.registerFormGroup.controls.state.touched) {
+          if (this.registerFormGroup.controls.state.dirty) {
             this.registerFormGroup.controls.city.setValue(null);
           }
         })
